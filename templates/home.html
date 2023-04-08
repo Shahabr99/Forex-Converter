@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/app.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Convert currencies</h1>
+      {% for msg in get_flashed_messages() %}
+      <h4>{{msg}}</h4>
+      {% endfor %}
+      <form action="/result" method="POST">
+        <label>Converting from <input type="text" name="old" /> </label><br />
+        <label>Coverting to <input type="text" name="to" /> </label><br />
+        <label>Amount <input type="text" name="amount" /> </label><br />
+        <input type="submit" value="Convert" />
+      </form>
+    </main>
+  </body>
+</html>
