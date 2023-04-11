@@ -23,13 +23,13 @@ def get_data():
     amount = request.form.get('amount', '')
   
     if not first or not second or not amount:
-      flash('Please senter a value for all fields')
+      flash('Please enter a value for all fields')
       return redirect('/')
 
     try:
       fx.get_rate(first, second)
-    except RatesNotAvailableError:
-      flash('invalid currency code provided')
+    except RatesNotAvailableError as e:
+      flash(f'Error: {str(e)}')
       return redirect('/')
     
     url = f"https://api.exchangerate.host/convert?from={first}&to={second}&amount={amount}"
